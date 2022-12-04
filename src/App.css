@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+
+.liststudent{
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 50px;
+  column-gap: 10px;
+ 
+  /* column-gap: 3%; */
+  
+}
+
+.successmsg{
+  color: green;
+}
