@@ -5,10 +5,7 @@ import {useFormik} from 'formik';
 import { API } from './global';
 
 export function AddStudent() {
-// const [stName, setStName]= useEffect("");
-// const [stAdd, setStAdd]= useEffect("");
-// const [stBatch, setStBatch]= useEffect("")
-// const [stLang, setStLang]= useEffect("")
+
 const stu={
   name:"",
   course:"",
@@ -32,10 +29,7 @@ const formik=useFormik({
   }
 })
 const [sent, setSent]=useState(0)
-// const handleAddStudent=(e)=>{
-//   console.log("This is handleaddstudent",)
-//   console.log(e.target.values)
-// }
+
   return (
     <div>
       <h2>To Add student : Enter students Details</h2>
@@ -43,7 +37,6 @@ const [sent, setSent]=useState(0)
 
         <TextField id="outlined-basic" label="Enter Name" variant="outlined"  onChange={
           (e)=>{console.log(e.target.value); 
-        // formik.value.name=e.target.value;
         stu.name=e.target.value;
          console.log(" student name is:", stu.name);
           }}/>
