@@ -19,6 +19,7 @@ import Typography from '@mui/material/Typography';
 import { AddStudent } from './AddStudent';
 import { DisplayStudent } from './DisplayStudent';
 import { AddTeachers } from './AddTeachers';
+import { DisplayTeachers } from './DisplayTeachers';
 
 const drawerWidth = 240;
 
@@ -164,16 +165,6 @@ Dashboard.propTypes = {
 };
 
 export default Dashboard;
-
-
-function DisplayTeachers(){
-    return(
-        <div>
-           <h2>this is DisplayTeachers component</h2> 
-        </div>
-    )
-}
-
 
 
 
