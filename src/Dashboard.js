@@ -20,6 +20,9 @@ import { AddStudent } from './AddStudent';
 import { DisplayStudent } from './DisplayStudent';
 import { AddTeachers } from './AddTeachers';
 import { DisplayTeachers } from './DisplayTeachers';
+import Trial from './Trial';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import ApprovalIcon from '@mui/icons-material/Approval';
 
 const drawerWidth = 240;
 
@@ -30,7 +33,7 @@ function Dashboard(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+// To keep track of choice selected by user
   const [choice, setChoice]=React.useState(0);
   useEffect(() => {
     console.log("This is:", choice);
@@ -48,11 +51,10 @@ function Dashboard(props) {
             index===1? setChoice(1):
             index===2? setChoice(2):
             setChoice(3)
-
           }}>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {index % 2 === 0 ? <AssignmentIndIcon /> : <ApprovalIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -60,18 +62,6 @@ function Dashboard(props) {
         ))}
       </List>
       <Divider />
-      {/* <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List> */}
     </div>
   );
 
@@ -146,7 +136,8 @@ function Dashboard(props) {
             {choice === 0? <AddStudent/>: 
       choice === 1 ? <DisplayStudent/> :
 
-     choice === 2 ? <AddTeachers/>
+    //  choice === 2 ? <AddTeachers/>
+     choice === 2 ? <Trial/>
      : <DisplayTeachers/>
 }
           

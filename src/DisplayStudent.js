@@ -26,7 +26,7 @@ useEffect(()=>{getStudents()},[])
   return (
     <div>
       <h2>Student List</h2>
-      <div className='liststudent'>
+      <div className='listdisplay'>
       { studentlist.map((ele,index)=>(
         <SingleStudentDisplay ele={ele} index={index}/>
        ))}
@@ -41,7 +41,6 @@ useEffect(()=>{getStudents()},[])
 // Single Student Display element in this component
 function SingleStudentDisplay(props){
 
-  // const navigate= useNavigate();
   return(
     <div>      
        <Card sx={{ maxWidth: 300 }} >
@@ -50,9 +49,13 @@ function SingleStudentDisplay(props){
         {props.ele.name} {props.ele.id}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Student has enrolled for {props.ele.course}, is in the Batch {props.ele.Batch}
+          Student has enrolled for {props.ele.course}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Registered Batch : {props.ele.Batch}
         </Typography>
       </CardContent>
+      {/* to all any button for each card  */}
       {/* <CardActions>
         <Button size="small" onClick={()=>navigate("student/edit")}>Edit</Button>
         <Button size="small">More Details</Button>
