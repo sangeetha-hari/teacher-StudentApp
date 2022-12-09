@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { API } from "./global";
+import { useNavigate } from 'react-router-dom';
 
-
-export default function Trial() {
+export default function AddTeacher() {
   const [fname, setFname] = useState("");
   const [fexp, setFexp] = useState(0);
   const [courses, setcourse]= useState("");
   const [currentbatch, setCurrentbatch]= useState("");
-
+  const navigate=useNavigate();
   return (
-    <div>
+    <div className="conentdisplay">
       <h1>Register Faculty</h1>
       <div className="liststudent">
         <TextField
@@ -68,7 +68,8 @@ export default function Trial() {
                 body: JSON.stringify(newteacher),
                 headers:{"Content-Type":"application/json"}
             }).then((data)=>{data.json();})
-            .then((result)=>{ console.log(result); console.log("Successfully added the Faculty")})
+            .then((result)=>{ console.log(result); console.log("Successfully added the Faculty");
+            navigate('/teacher/display')})
 
 
 

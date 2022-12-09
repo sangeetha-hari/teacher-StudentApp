@@ -31,7 +31,7 @@ const formik=useFormik({
 const [sent, setSent]=useState(0)
 
   return (
-    <div>
+    <div className='conentdisplay'>
       <h2>To Add student : Enter students Details</h2>
       <form onSubmit={formik.handleSubmit} className='liststudent'>
 

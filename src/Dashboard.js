@@ -18,11 +18,13 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { AddStudent } from './AddStudent';
 import { DisplayStudent } from './DisplayStudent';
-import { AddTeachers } from './AddTeachers';
+
 import { DisplayTeachers } from './DisplayTeachers';
-import Trial from './Trial';
+import AddTeacher from './AddTeacher';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import ApprovalIcon from '@mui/icons-material/Approval';
+
+import {Navigate, Routes, Route,useNavigate} from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -38,7 +40,25 @@ function Dashboard(props) {
   useEffect(() => {
     console.log("This is:", choice);
   }, [choice]);
+ const navigate= useNavigate();
 
+ function setAddstudent(index)
+ {
+  setChoice(0) ; navigate("/student/add",+index);
+ }
+ function setDisplaystudent(index)
+ {
+  setChoice(1) ; navigate("/student/display",+index);
+ }
+ function setAddTeacher(index)
+ {
+  setChoice(2) ; navigate("/teacher/add",+index);
+ }
+ function setDisplaysTeachers(index)
+ {
+  setChoice(3) ; navigate("/teacher/display",+index);
+
+ }
 
   const drawer = (
     <div>
@@ -46,11 +66,11 @@ function Dashboard(props) {
       <Divider />
       <List>
         {['Add Student', 'Display Student', 'Add Teacher', 'Display Teacher'].map((text, index) => (
-          <ListItem key={text} disablePadding  onClick={()=> {
-            index===0? setChoice(0):
-            index===1? setChoice(1):
-            index===2? setChoice(2):
-            setChoice(3)
+          <ListItem key={text} disablePadding  onClick={()=> { 
+            index===0? setAddstudent(index):
+            index===1? setDisplaystudent(index):
+            index===2? setAddTeacher(index):
+            setDisplaysTeachers(index)
           }}>
             <ListItemButton>
               <ListItemIcon>
@@ -124,15 +144,15 @@ function Dashboard(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Box
+      {/* <Box
         component="main"
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
-        <Toolbar />
-        <Typography paragraph>
+        <Toolbar /> */}
+        {/* <Typography paragraph>
          {}
-        </Typography>
-        <Typography paragraph>
+        </Typography> */}
+        {/* <Typography paragraph>
             {choice === 0? <AddStudent/>: 
       choice === 1 ? <DisplayStudent/> :
 
@@ -141,8 +161,8 @@ function Dashboard(props) {
      : <DisplayTeachers/>
 }
           
-        </Typography>
-      </Box>
+        </Typography> */}
+      {/* </Box> */}
     </Box>
   );
 }

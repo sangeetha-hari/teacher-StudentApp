@@ -14,14 +14,16 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #282c34; */
+  margin-left: 10%;
+
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  /* color: white; */
 }
 
 .App-link {
@@ -61,4 +63,12 @@
 
 .successmsg{
   color: green;
+}
+
+
+.conentdisplay{
+  margin-left: 25%;
+  margin-right: 2%;
+  margin-bottom: 5%;
+
 }

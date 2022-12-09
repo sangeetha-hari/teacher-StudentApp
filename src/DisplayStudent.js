@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import {Navigate, Routes, Route,useNavigate} from 'react-router-dom';
 
 
 export function DisplayStudent() {
@@ -23,8 +24,9 @@ const getStudents=()=>{
 //Call this function once
 useEffect(()=>{getStudents()},[])
 
+
   return (
-    <div>
+    <div className='conentdisplay'>
       <h2>Student List</h2>
       <div className='listdisplay'>
       { studentlist.map((ele,index)=>(
@@ -40,7 +42,15 @@ useEffect(()=>{getStudents()},[])
 
 // Single Student Display element in this component
 function SingleStudentDisplay(props){
-
+  const navigate= useNavigate();
+  function studentdelete(id,index){
+    fetch(`${API}/teacher/${id}`,
+    {method:"DELETE"}
+    ) .then((data)=>data.json())
+    .then((result)=>{console.log(result);
+      window.alert("one Student deleted ")
+    navigate('/student/add')})
+  }
   return(
     <div>      
        <Card sx={{ maxWidth: 300 }} >
@@ -56,10 +66,13 @@ function SingleStudentDisplay(props){
         </Typography>
       </CardContent>
       {/* to all any button for each card  */}
-      {/* <CardActions>
-        <Button size="small" onClick={()=>navigate("student/edit")}>Edit</Button>
-        <Button size="small">More Details</Button>
-      </CardActions> */}
+      <CardActions>
+        <Button size="small" onClick={()=>{navigate('/student/edit/'+props.ele.id)}}>Edit</Button>
+        {/* <Button size="small" onClick={()=>{}}>More Details</Button> */}
+        <Button size="small" onClick={()=>{
+          window.confirm("Are you sure u want to detele", "yes")? studentdelete(props.ele.id, props.index): console.log("Dont delete the faculty");
+        }}>Delete</Button>
+      </CardActions>
 
        </Card>
       
